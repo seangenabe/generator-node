@@ -1,0 +1,21 @@
+{
+  "name": "@s4g6/generator-node4",
+  "version": "1.0.0",
+  "description": "node.js package generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "Sean Genabe <seangenabe@outlook.com>",
+  "license": "MIT",
+  "files": [],
+  "dependencies": {
+    "yeoman-generator": "^0.22.4"
+  },
+  "engines": {
+    "node": ">=4"
+  }
+}

@@ -1,0 +1,2 @@
+* text=auto
+generators/app/templates/bin/ -text
