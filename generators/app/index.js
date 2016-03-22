@@ -88,8 +88,7 @@ module.exports = class AppGenerator extends generators.Base {
           license: "MIT",
           engines: { node: ">=4" },
           main: this.props.babel ? 'dist/index.js' : 'index.js',
-          keywords: [],
-          devDependencies: {}
+          keywords: []
         }
         if (this.props.babel) {
           pkg.files = [ 'dist' ]
@@ -102,6 +101,7 @@ module.exports = class AppGenerator extends generators.Base {
             plugins: [].concat(this.props.babelplugins)
           }
           for (let n of this.props.babelplugins) {
+            pkg.devDependencies = pkg.devDependencies || {}
             pkg.devDependencies[`babel-plugin-transform-${n}`] = '^6.4'
           }
           pkg.scripts.build = 'babel lib -d dist'
