@@ -86,7 +86,7 @@ module.exports = class AppGenerator extends generators.Base {
           author: "Sean Genabe <seangenabe@outlook.com>",
           repository: `seangenabe/${this.props.name}`,
           license: "MIT",
-          engines: { node: ">=4" },
+          engines: { node: ">=4.0.0" },
           main: this.props.babel ? 'dist/index.js' : 'index.js',
           keywords: []
         }
