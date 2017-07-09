@@ -1,7 +1,6 @@
-'use strict'
-
 const generators = require('yeoman-generator')
 const Path = require('path')
+const sortPackageJson = require('sort-package-json')
 
 module.exports = class AppGenerator extends generators.Base {
 
@@ -113,6 +112,7 @@ module.exports = class AppGenerator extends generators.Base {
           pkg.scripts.prepublish = 'npm run build'
         }
 
+        pkg = sortPackageJson(pkg)
         this.fs.writeJSON(this.destinationPath('package.json'), pkg)
       },
 
