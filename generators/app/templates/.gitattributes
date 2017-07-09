@@ -1,2 +1,2 @@
-* text=auto
-<% if (cli) { %>bin/ -text<% } %>
+* text=auto<% if (cli) {
+%>bin/ -text<% } %>
