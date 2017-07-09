@@ -1,6 +1,6 @@
 {
   "name": "@seangenabe/generator-node4",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "node.js package generator",
   "main": "index.js",
   "scripts": {
