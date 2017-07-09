@@ -43,14 +43,13 @@ module.exports = class AppGenerator extends generators.Base {
             type: 'checkbox',
             default: [],
             choices: [
-              'async-to-generator',
-              'es2015-destructuring',
-              'es2015-function-name',
-              'es2015-modules-commonjs',
-              'es2015-parameters',
-              'es2015-spread',
-              'es2015-sticky-regex',
-              'es2015-unicode-regex'
+              'async-generator-functions',
+              'class-properties',
+              'do-expressions',
+              'export-extensions',
+              'function-bind',
+              'object-rest-spread',
+              'flow-comments'
             ],
             when(answers) {
               return answers.babel
