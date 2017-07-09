@@ -8,82 +8,73 @@ module.exports = class AppGenerator extends generators.Base {
     super(args, options)
   }
 
-  get prompting() {
-    const ret = {
-      askFor() {
-        let done = this.async()
-
-        let prompts = [
-          {
-            name: 'name',
-            message: "Package name",
-            default: Path.basename(this.destinationPath())
-          },
-          {
-            name: 'description',
-            message: "Description"
-          },
-          {
-            name: 'keywords',
-            message: "Package keywords (comma-separated)",
-            filter(words) {
-              return words.split(/\s*,\s*/g)
-            }
-          },
-          {
-            name: 'babel',
-            message: "Add Babel functionality",
-            type: 'confirm',
-            default: true
-          },
-          {
-            name: 'babelplugins',
-            message: 'What plugins should I include?',
-            type: 'checkbox',
-            default: [],
-            choices: [
-              'async-generator-functions',
-              'class-properties',
-              'do-expressions',
-              'export-extensions',
-              'function-bind',
-              'object-rest-spread',
-              'flow-comments'
-            ],
-            when(answers) {
-              return answers.babel
-            }
-          },
-          {
-            name: 'private',
-            message: "Private (Do not publish to npm; Travis CI won't be added)?",
-            type: 'confirm',
-            default: false
-          },
-          {
-            name: 'travisci',
-            message: "Add Travis CI?",
-            type: 'confirm',
-            default: false,
-            when(answers) {
-              return !answers.private
-            }
-          },
-          {
-            name: 'cli',
-            message: "Add a CLI?",
-            type: 'confirm',
-            default: false
-          }
-        ]
-
-        this.prompt(prompts, props => {
-          this.props = props
-          done()
-        })
+  prompting() {
+    let prompts = [
+      {
+        name: 'name',
+        message: "Package name",
+        default: Path.basename(this.destinationPath())
+      },
+      {
+        name: 'description',
+        message: "Description"
+      },
+      {
+        name: 'keywords',
+        message: "Package keywords (comma-separated)",
+        filter(words) {
+          return words.split(/\s*,\s*/g)
+        }
+      },
+      {
+        name: 'babel',
+        message: "Add Babel functionality",
+        type: 'confirm',
+        default: true
+      },
+      {
+        name: 'babelplugins',
+        message: 'What plugins should I include?',
+        type: 'checkbox',
+        default: [],
+        choices: [
+          'async-generator-functions',
+          'class-properties',
+          'do-expressions',
+          'export-extensions',
+          'function-bind',
+          'object-rest-spread',
+          'flow-comments'
+        ],
+        when(answers) {
+          return answers.babel
+        }
+      },
+      {
+        name: 'private',
+        message: "Private (Do not publish to npm; Travis CI won't be added)?",
+        type: 'confirm',
+        default: false
+      },
+      {
+        name: 'travisci',
+        message: "Add Travis CI?",
+        type: 'confirm',
+        default: false,
+        when(answers) {
+          return !answers.private
+        }
+      },
+      {
+        name: 'cli',
+        message: "Add a CLI?",
+        type: 'confirm',
+        default: false
       }
-    }
-    return ret
+    ]
+    return this.prompting(prompts).then(props => {
+      this.props = props
+    })
   }
 
   get writing() {
