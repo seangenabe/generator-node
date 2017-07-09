@@ -1,5 +1,5 @@
 {
-  "name": "@seangenabe/generator-node4",
+  "name": "@seangenabe/generator-node",
   "version": "2.0.0",
   "description": "node.js package generator",
   "main": "index.js",
