@@ -56,6 +56,12 @@ module.exports = class AppGenerator extends generators.Base {
             }
           },
           {
+            name: 'travisci',
+            message: "Add Travis CI?",
+            type: 'confirm',
+            default: false
+          },
+          {
             name: 'cli',
             message: "Add a CLI?",
             type: 'confirm',
@@ -111,10 +117,12 @@ module.exports = class AppGenerator extends generators.Base {
       },
 
       travisyml() {
-        this.fs.copyTpl(
-          this.templatePath('.travis.yml'),
-          this.destinationPath('.travis.yml')
-        )
+        if (this.props.travisci) {
+          this.fs.copyTpl(
+            this.templatePath('.travis.yml'),
+            this.destinationPath('.travis.yml')
+          )
+        }
       },
 
       readmemd() {
