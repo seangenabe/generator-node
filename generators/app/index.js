@@ -77,8 +77,8 @@ module.exports = class AppGenerator extends generators.Base {
     })
   }
 
-  get writing() {
-    const ret = {
+  writing() {
+    return {
 
       packagejson() {
         let pkg = {
@@ -189,7 +189,6 @@ module.exports = class AppGenerator extends generators.Base {
       }
 
     }
-    return ret
   }
 
   installing() {
