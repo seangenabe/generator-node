@@ -55,10 +55,19 @@ module.exports = class AppGenerator extends generators.Base {
             }
           },
           {
+            name: 'private',
+            message: "Private (Do not publish to npm; Travis CI won't be added)?",
+            type: 'confirm',
+            default: false
+          },
+          {
             name: 'travisci',
             message: "Add Travis CI?",
             type: 'confirm',
-            default: false
+            default: false,
+            when(answers) {
+              return !answers.private
+            }
           },
           {
             name: 'cli',
@@ -93,6 +102,9 @@ module.exports = class AppGenerator extends generators.Base {
           engines: { node: ">=4.0.0" },
           main: this.props.babel ? 'dist/index.js' : 'index.js',
           keywords: []
+        }
+        if (this.props.private) {
+          pkg.private = this.props.private
         }
         if (this.props.babel) {
           pkg.files = [ 'dist' ]
@@ -129,10 +141,7 @@ module.exports = class AppGenerator extends generators.Base {
         this.fs.copyTpl(
           this.templatePath('readme.md'),
           this.destinationPath('readme.md'),
-          {
-            name: this.props.name,
-            description: this.props.description
-          }
+          this.props
         )
       },
 
